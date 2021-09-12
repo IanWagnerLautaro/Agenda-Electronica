@@ -15,6 +15,14 @@ public class Vista_Principal extends javax.swing.JFrame {
      * Creates new form Vista_Principal
      */
     public Vista_Principal() {
+        
+        this.DNI = new String [10];
+        this.Nombre = new String [10];
+        this.Apellido = new String [10];
+        this.Direccion = new String [10];
+        this.Telefono = new String [10];
+        this.F_Nac = new String [10] ;
+        this.Indice_Guardado = new boolean [10] ;
         initComponents();
     }
 
@@ -47,7 +55,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txt_indice = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +88,11 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         jButton1.setForeground(new java.awt.Color(0, 0, 255));
         jButton1.setText("Grabar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setForeground(new java.awt.Color(0, 0, 255));
         jButton2.setText("<<");
@@ -97,14 +110,14 @@ public class Vista_Principal extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setEditable(false);
-        jTextField1.setForeground(new java.awt.Color(0, 51, 153));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("0");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153)));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_indice.setEditable(false);
+        txt_indice.setForeground(new java.awt.Color(0, 51, 153));
+        txt_indice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_indice.setText("0");
+        txt_indice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153)));
+        txt_indice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txt_indiceActionPerformed(evt);
             }
         });
 
@@ -154,7 +167,7 @@ public class Vista_Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(txt_indice))
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -202,7 +215,7 @@ public class Vista_Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_indice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -219,18 +232,109 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    // SE CREAN LOS VECTORES PARA GUARDAR LA INFORMACION
+    
+    private String DNI[];
+    private String Nombre[];
+    private String Apellido[];
+    private String Direccion[];
+    private String Telefono[];
+    private String F_Nac[];
+    
+    // SE CREA UN VECTOR PARA VERIFICAR QUE POSICIONES FUERON GUARDADAS
+    
+    private boolean Indice_Guardado[];
+    
+    // SE CREA UN VARIABLE PARA GUARDAR LA POSICION DEL INDICE
+    
+    private int Indice=0;
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
+        // VERIFICAMOS QUE EL USUARIO NO ESTE UBICADO EN LA POSICION 0
+        if(this.Indice!=0){
+            this.Indice--;
+            
+            txt_indice.setText(String.valueOf(this.Indice));
+            
+            // MOSTRAMOS LA INFORMACION EN CASO DE QUE HAYA SIDO GUARDADA
+            
+            if(this.Indice_Guardado[this.Indice]==true){
+                txt_dni.setText(this.DNI[this.Indice]);
+                txt_nombre.setText(this.Nombre[this.Indice]);
+                txt_apellido.setText(this.Apellido[this.Indice]);
+                txt_direccion.setText(this.Direccion[this.Indice]);
+                txt_telefono.setText(this.Telefono[this.Indice]);
+                txt_nac.setText(this.F_Nac[this.Indice]);
+                
+            }else{
+                
+                // EN CASO DE QUE NO SE ENCUENTRE GUARDADO EL INDICE, BORRAMOS LOS CAMPOS DE TEXTO
+                
+                txt_dni.setText("");
+                txt_nombre.setText("");
+                txt_apellido.setText("");
+                txt_direccion.setText("");
+                txt_telefono.setText("");
+                txt_nac.setText("");
+                
+            }
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
+        // VERIFICAMOS QUE EL USUARIO NO ESTE UBICADO EN LA POSICION 9
+        if(this.Indice!=9){
+            this.Indice++;
+            
+            txt_indice.setText(String.valueOf(this.Indice));
+            
+            // MOSTRAMOS LA INFORMACION EN CASO DE QUE HAYA SIDO GUARDADA
+            
+            if(this.Indice_Guardado[this.Indice]==true){
+                txt_dni.setText(this.DNI[this.Indice]);
+                txt_nombre.setText(this.Nombre[this.Indice]);
+                txt_apellido.setText(this.Apellido[this.Indice]);
+                txt_direccion.setText(this.Direccion[this.Indice]);
+                txt_telefono.setText(this.Telefono[this.Indice]);
+                txt_nac.setText(this.F_Nac[this.Indice]);
+                
+            }else{
+                
+                // EN CASO DE QUE NO SE ENCUENTRE GUARDADO EL INDICE, BORRAMOS LOS CAMPOS DE TEXTO
+                
+                txt_dni.setText("");
+                txt_nombre.setText("");
+                txt_apellido.setText("");
+                txt_direccion.setText("");
+                txt_telefono.setText("");
+                txt_nac.setText("");
+                
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txt_indiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_indiceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txt_indiceActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        // SE GUARDA LA INFORMACION EN LOS VECTORES
+        
+        this.DNI[this.Indice]=txt_dni.getText().toString();
+        this.Nombre[this.Indice]=txt_nombre.getText().toString();
+        this.Apellido[this.Indice]=txt_apellido.getText().toString();
+        this.Direccion[this.Indice]=txt_direccion.getText().toString();
+        this.Telefono[this.Indice]=txt_telefono.getText().toString();
+        this.F_Nac[this.Indice]=txt_nac.getText().toString();
+        
+        this.Indice_Guardado[this.Indice]=true;
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     
@@ -250,10 +354,10 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_dni;
+    private javax.swing.JTextField txt_indice;
     private javax.swing.JTextField txt_nac;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
