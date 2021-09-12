@@ -5,6 +5,8 @@
  */
 package LOGICA;
 
+import IGU.Vista_Principal;
+
 /**
  *
  * @author familiawagner
@@ -15,6 +17,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        // TODO code application logic here
+        Vista_Principal pantalla = new Vista_Principal();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
     }
 }
