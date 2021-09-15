@@ -11,10 +11,26 @@ package IGU;
  */
 public class Vista_Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Vista_Principal
-     */
+    // SE CREAN LOS VECTORES PARA GUARDAR LA INFORMACION
+    
+    private String DNI[];
+    private String Nombre[];
+    private String Apellido[];
+    private String Direccion[];
+    private String Telefono[];
+    private String F_Nac[];
+    
+    // SE CREA UN VECTOR PARA VERIFICAR QUE POSICIONES FUERON GUARDADAS
+    
+    private boolean Indice_Guardado[];
+    
+    // SE CREA UN VARIABLE PARA GUARDAR LA POSICION DEL INDICE
+    
+    private int Indice=0;
+    
     public Vista_Principal() {
+        
+        // SE INICIALIZAN LOS VECTORES Y VARIABLES EN EL CONSTRUCTOR
         
         this.DNI = new String [10];
         this.Nombre = new String [10];
@@ -233,22 +249,6 @@ public class Vista_Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    // SE CREAN LOS VECTORES PARA GUARDAR LA INFORMACION
-    
-    private String DNI[];
-    private String Nombre[];
-    private String Apellido[];
-    private String Direccion[];
-    private String Telefono[];
-    private String F_Nac[];
-    
-    // SE CREA UN VECTOR PARA VERIFICAR QUE POSICIONES FUERON GUARDADAS
-    
-    private boolean Indice_Guardado[];
-    
-    // SE CREA UN VARIABLE PARA GUARDAR LA POSICION DEL INDICE
-    
-    private int Indice=0;
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         

@@ -19,6 +19,6 @@ public class Main {
     public static void main(String args[]) {
         Vista_Principal pantalla = new Vista_Principal();
         pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+        pantalla.setLocationRelativeTo(null);       
     }
 }
